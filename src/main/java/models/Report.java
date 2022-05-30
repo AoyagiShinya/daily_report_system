@@ -21,7 +21,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name="JpaConst.TABLE_REP")
+@Table(name = JpaConst.TABLE_REP)
 @NamedQueries({
     @NamedQuery(
             name = JpaConst.Q_REP_GET_ALL,
@@ -43,6 +43,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 public class Report {
+
     @Id
     @Column(name = JpaConst.REP_COL_ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,7 +62,6 @@ public class Report {
     @Lob
     @Column(name = JpaConst.REP_COL_CONTENT, nullable = false)
     private String content;
-
 
     @Column(name = JpaConst.REP_COL_CREATED_AT, nullable = false)
     private LocalDateTime createdAt;
