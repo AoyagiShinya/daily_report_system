@@ -12,7 +12,7 @@ import constants.AttributeConst;
 import constants.ForwardConst;
 import constants.JpaConst;
 import constants.MessageConst;
-import models.validators.ReportService;
+import services.ReportService;
 
 public class ReportAction extends ActionBase {
     private ReportService service;
@@ -100,4 +100,14 @@ public class ReportAction extends ActionBase {
             }
         }
     }
+
+    public void show() throws ServletException, IOException {
+        ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
+        if (rv == null) {
+            forward(ForwardConst.FW_ERR_UNKNOWN);
+        } else {
+            putRequestScope(AttributeConst.REPORT, rv);
+            forward(ForwardConst.FW_REP_SHOW);
+        }
+}
 }
